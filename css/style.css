@@ -1,0 +1,22 @@
+/* Farpalette 
+#34626c -main
+#839b97 - backround
+#cfd3ce -sidbar
+#c6b497
+*/
+
+/* elements */
+body {
+    background-color:#34626c;
+}
+
+/* class */
+.map {
+    background-color:#cfd3ce;
+    padding: 2%;
+    text-align: center;
+}
+
+.mapimage {
+
+}
