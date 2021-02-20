@@ -1,3 +1,7 @@
 data/
 GM_Utils/
 gpx.html
+.cache/
+dist/
+node_modules/
+package-lock.json

@@ -1,6 +1,6 @@
 /* Farpalette 
 #34626c -main
-#839b97 - backround
+#839b97 
 #cfd3ce -sidbar
 #c6b497
 */
@@ -8,15 +8,34 @@
 /* elements */
 body {
     background-color:#34626c;
+    font-family: 'Satisfy', cursive;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.bd-example {
+    text-align: center;
+}
+.carousel-inner {
+    margin-bottom: 10px;
 }
 
 /* class */
-.map {
+.container-fluid {
     background-color:#cfd3ce;
-    padding: 2%;
+    /* padding: 2%; */
     text-align: center;
 }
 
-.mapimage {
+#map {
+    width: 1800px;
+    height: 780px;
+    display: inline-block;
+    margin: auto;
+  }
 
-}
+  .own-nav {
+    background-color: #34626c;
+  }
