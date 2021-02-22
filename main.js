@@ -3,7 +3,7 @@ import {Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 // import VectorLayer from "ol/layer/Vector";
 // import VectorSource from 'ol/source/Vector';
-// import GPX from 'ol/format/GPX';
+import GPX from 'ol/format/GPX';
 import OSM from 'ol/source/OSM';
 import {fromLonLat} from 'ol/proj';
 // import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style';
@@ -24,4 +24,3 @@ let map = new Map({
     }),
 });
 
-// test
