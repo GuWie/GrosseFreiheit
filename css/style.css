@@ -22,6 +22,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+.anker {
+    height: 20px;
+}
+
 /* class */
 .container-fluid {
     background-color:#cfd3ce;
@@ -30,12 +34,22 @@ h1 {
 }
 
 #map {
-    width: 1800px;
-    height: 780px;
+    width: 1390px;
+    height: 600px;
     display: inline-block;
     margin: auto;
   }
 
-  .own-nav {
-    background-color: #34626c;
-  }
+.own-nav {
+background-color: #34626c;
+}
+
+.grid-container{
+display: grid;
+grid-template-columns: 10vw 80vw;
+grid-template-rows: 100vh;
+}
+
+.sidebar{
+    margin-left: 15px;
+}
