@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html",
-    "heroku-postbuild" : "parcel build index.html"
+    "heroku-postbuild": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/GuWie/GrosseFreiheit#readme",
   "dependencies": {
     "ol": "^6.5.0",
+    "os": "^0.1.1",
     "parcel-bundler": "^1.12.4"
   },
   "engines": {

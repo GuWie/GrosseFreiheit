@@ -13,6 +13,22 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 // import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style';
 
+// fixing physical-cpu-count
+import os from 'os';
+
+let amount;
+
+const cores = os.cpus().filter(function(cpu, index) {
+  const hasHyperthreading = cpu.model.includes('Intel');
+  const isOdd = index % 2 === 1;
+  return !hasHyperthreading || isOdd;
+});
+amount = cores.length;
+
+module.exports = amount;
+// 
+
+
 // BaseMap
 const map = new Map({
     view: new View({
