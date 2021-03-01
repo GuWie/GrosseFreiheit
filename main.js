@@ -1,26 +1,62 @@
 import 'ol/ol.css';
 import {Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
+import LayerGroup from 'ol/layer/Group';
 // import VectorLayer from "ol/layer/Vector";
 // import VectorSource from 'ol/source/Vector';
 import GPX from 'ol/format/GPX';
 import OSM from 'ol/source/OSM';
 import {fromLonLat} from 'ol/proj';
+import XYZ from 'ol/source/XYZ';
+import {transform} from 'ol/proj';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
 // import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style';
 
-const goetzingerLonLat = [8.6517143982536, 49.67539982152498];
-const goetzingerLonLatWebMercator = fromLonLat(goetzingerLonLat);
-
-let tile = new TileLayer({
-    source: new OSM()
-});
-
-let map = new Map({
-    target: document.getElementById('map'),
-    layers: [tile],
+// BaseMap
+const map = new Map({
     view: new View({
-        center: goetzingerLonLatWebMercator,
-        zoom: 15
+      center: transform([8.625785037875176, 49.676954029127955], 'EPSG:4326', 'EPSG:3857'),
+      zoom: 15
     }),
-});
-
+    layers: [
+      new TileLayer({
+        source: new OSM(),
+        zIndex: 0,
+        visible: true,
+        title: "Basemap",
+      })
+    ],
+    target: "map",
+    keyboardEventTarget : document
+  })
+  
+  const layerGroup = new LayerGroup({
+    layers: [
+      new TileLayer({
+        source: new XYZ({
+          url: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+        }),
+        zIndex: 1,
+        visible: false,
+        title: "Seezeichen",
+      })
+    ],
+  })
+  
+  map.addLayer(layerGroup)
+  
+  //LayerSwitcherLogic
+  const baseLayerElements = document.querySelectorAll(".sidebar > input[type=checkbox");
+  for (let baseLayerElement of baseLayerElements) {
+    baseLayerElement.addEventListener("change", function() {
+      let baseLayerElementValue = this.value;
+      let baseLayer;
+      layerGroup.getLayers().forEach(function(element, index, array){
+        if (baseLayerElementValue === element.get("title")){
+          baseLayer = element;
+        }
+      })
+      this.checked ? baseLayer.setVisible(true) : baseLayer.setVisible(false);
+    })
+  }
